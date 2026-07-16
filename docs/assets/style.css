@@ -203,3 +203,174 @@ main {
   font-size: 0.85rem;
   padding: 1rem;
 }
+
+.notebook {
+  margin-top: 2rem;
+  background: linear-gradient(160deg, var(--surface), #0f0e0c);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.notebook-heading {
+  margin: 0 0 0.4rem;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+
+.notebook-heading:not(:first-child) {
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.notebook-hint {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.notes-editor {
+  width: 100%;
+  resize: vertical;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.notes-editor:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.notes-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.notes-status {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.notes-export,
+.attach-link-form button,
+.attachment-remove {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-bright);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.notes-export:hover,
+.attach-link-form button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.attach-link-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.attach-link-form input {
+  flex: 1 1 160px;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.attach-link-form input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.attach-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.attach-file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.attach-file-status {
+  color: var(--gold-bright);
+  font-size: 0.82rem;
+}
+
+.attachment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.attachment-empty {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+}
+
+.attachment-item a {
+  color: var(--gold-bright);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.attachment-item a:hover {
+  text-decoration: underline;
+}
+
+.attachment-remove {
+  border-color: var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.attachment-remove:hover {
+  border-color: #b8452e;
+  color: #e0715a;
+}

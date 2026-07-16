@@ -178,6 +178,7 @@ $bodyHtml
 <footer class="site-footer">
   <p>Persönliche Wissenssammlung</p>
 </footer>
+<script src="assets/notebook.js"></script>
 </body>
 </html>
 "@
@@ -190,6 +191,35 @@ foreach ($t in $topics) {
   <h1>$($t.Emoji) $($t.Title)</h1>
   $($t.BodyHtml)
 </article>
+
+<section class="notebook" data-slug="$($t.Slug)">
+  <h2 class="notebook-heading">📝 Meine Notizen</h2>
+  <p class="notebook-hint">Wird automatisch in diesem Browser gespeichert (nicht auf GitHub). Mit „Exportieren“ kannst du sie dauerhaft sichern.</p>
+  <textarea class="notes-editor" rows="8" placeholder="Deine eigenen Notizen zu diesem Thema..."></textarea>
+  <div class="notes-toolbar">
+    <span class="notes-status"></span>
+    <button type="button" class="notes-export">Als Markdown exportieren</button>
+  </div>
+
+  <h2 class="notebook-heading">📎 Meine Dokumente</h2>
+  <p class="notebook-hint">Links zu eigenen Dateien (z.B. Google Drive, OneDrive) anheften oder kleine Dateien (max. 3 MB) direkt einbetten.</p>
+
+  <form class="attach-link-form">
+    <input type="text" class="attach-link-title" placeholder="Titel" required>
+    <input type="url" class="attach-link-url" placeholder="https://..." required>
+    <button type="submit">Link anheften</button>
+  </form>
+
+  <div class="attach-file-row">
+    <label class="attach-file-label">
+      Datei einbetten (max. 3 MB)
+      <input type="file" class="attach-file-input">
+    </label>
+    <span class="attach-file-status"></span>
+  </div>
+
+  <div class="attachment-list"></div>
+</section>
 "@
     $full = Get-Layout $t.Title $t.Slug $pageHtml
     Set-Content -Path (Join-Path $outDir "$($t.Slug).html") -Value $full -Encoding UTF8
@@ -218,4 +248,5 @@ $indexFull = Get-Layout "Meine Themen – Übersicht" $null $indexBody
 Set-Content -Path (Join-Path $outDir "index.html") -Value $indexFull -Encoding UTF8
 
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
