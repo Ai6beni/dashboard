@@ -231,22 +231,36 @@ main {
   font-size: 0.88rem;
 }
 
+.notes-paper {
+  position: relative;
+  border-radius: 13px;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--gold-dim), rgba(138, 111, 38, 0) 35%, rgba(138, 111, 38, 0) 65%, var(--gold-dim));
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.notes-paper:focus-within {
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12), 0 16px 34px rgba(212, 175, 55, 0.14);
+  transform: translateY(-1px);
+}
+
 .notes-editor {
+  display: block;
   width: 100%;
   resize: vertical;
   background: #0e0d0b;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  border: none;
+  border-radius: 11px;
   padding: 0.9rem 1rem;
   color: var(--text);
   font-family: inherit;
   font-size: 0.95rem;
   line-height: 1.6;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.35);
 }
 
 .notes-editor:focus {
   outline: none;
-  border-color: var(--gold-dim);
 }
 
 .notes-toolbar {
@@ -263,8 +277,7 @@ main {
 }
 
 .notes-export,
-.attach-link-form button,
-.attachment-remove {
+.attach-link-form button {
   background: transparent;
   border: 1px solid var(--gold-dim);
   color: var(--gold-bright);
@@ -330,44 +343,101 @@ main {
 }
 
 .attachment-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
 }
 
 .attachment-empty {
+  grid-column: 1 / -1;
   color: var(--muted);
   font-size: 0.88rem;
   margin: 0;
 }
 
 .attachment-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background: linear-gradient(160deg, var(--surface), #0f0e0c);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1rem 0.9rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.attachment-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.14);
+  border-color: var(--gold-dim);
+}
+
+.attachment-icon {
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  font-size: 1.25rem;
   background: #0e0d0b;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
 }
 
-.attachment-item a {
+.attachment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.attachment-title {
   color: var(--gold-bright);
   text-decoration: none;
-  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.attachment-item a:hover {
+.attachment-title:hover {
   text-decoration: underline;
 }
 
-.attachment-remove {
-  border-color: var(--border);
+.attachment-kind {
   color: var(--muted);
-  padding: 0.3rem 0.6rem;
-  font-size: 0.78rem;
-  flex-shrink: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.attachment-remove {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.attachment-item:hover .attachment-remove {
+  opacity: 1;
 }
 
 .attachment-remove:hover {

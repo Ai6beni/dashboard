@@ -195,7 +195,9 @@ foreach ($t in $topics) {
 <section class="notebook" data-slug="$($t.Slug)">
   <h2 class="notebook-heading">📝 Meine Notizen</h2>
   <p class="notebook-hint">Wird automatisch in diesem Browser gespeichert (nicht auf GitHub). Mit „Exportieren“ kannst du sie dauerhaft sichern.</p>
-  <textarea class="notes-editor" rows="8" placeholder="Deine eigenen Notizen zu diesem Thema..."></textarea>
+  <div class="notes-paper">
+    <textarea class="notes-editor" rows="8" placeholder="Deine eigenen Notizen zu diesem Thema..."></textarea>
+  </div>
   <div class="notes-toolbar">
     <span class="notes-status"></span>
     <button type="button" class="notes-export">Als Markdown exportieren</button>
@@ -248,5 +250,6 @@ $indexFull = Get-Layout "Meine Themen – Übersicht" $null $indexBody
 Set-Content -Path (Join-Path $outDir "index.html") -Value $indexFull -Encoding UTF8
 
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
 
