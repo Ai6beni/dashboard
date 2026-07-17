@@ -101,6 +101,45 @@ var TopicsStore = (function () {
     }
   });
 
+  // --- Emoji-Picker ---
+  var EMOJIS = [
+    '📚', '🧠', '💬', '🛒', '🚗', '⏱️', '🎯', '💡', '🔥', '⭐', '🎓', '📝',
+    '📌', '🗂️', '📈', '💰', '🏋️', '🧘', '🍳', '✈️', '🎨', '🎵', '🎮', '📷',
+    '🏠', '🌱', '❤️', '🧩', '🔧', '📅', '🧭', '🌍', '🚀', '⚡', '🏆', '📖',
+    '🖊️', '🍎', '☕', '🛠️', '🔍', '🧳', '🎬', '🐍', '🎉', '🌙', '☀️', '🍀'
+  ];
+
+  var emojiToggle = form.querySelector('.emoji-picker-toggle');
+  var emojiPopup = form.querySelector('.emoji-picker-popup');
+  var emojiInput = form.querySelector('.add-topic-emoji');
+
+  if (emojiToggle && emojiPopup && emojiInput) {
+    if (!emojiPopup.childElementCount) {
+      EMOJIS.forEach(function (e) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = e;
+        btn.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          emojiInput.value = e;
+          emojiPopup.classList.remove('open');
+        });
+        emojiPopup.appendChild(btn);
+      });
+    }
+
+    emojiToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      emojiPopup.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!emojiPopup.contains(e.target) && e.target !== emojiToggle) {
+        emojiPopup.classList.remove('open');
+      }
+    });
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var title = form.querySelector('.add-topic-title').value.trim();

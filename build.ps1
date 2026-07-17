@@ -252,7 +252,11 @@ $([string]::Join("`n", $cards))
   <button type="button" class="add-topic-button">+ Neues Thema</button>
   <form class="add-topic-form">
     <input type="text" class="add-topic-title" placeholder="Titel" required>
-    <input type="text" class="add-topic-emoji" placeholder="Emoji (optional)" maxlength="4">
+    <div class="emoji-field">
+      <input type="text" class="add-topic-emoji" placeholder="Emoji (optional)" maxlength="4">
+      <button type="button" class="emoji-picker-toggle" title="Emoji auswählen">😀</button>
+      <div class="emoji-picker-popup"></div>
+    </div>
     <input type="text" class="add-topic-summary" placeholder="Kurzbeschreibung (optional)">
     <button type="submit">Anlegen</button>
   </form>
@@ -273,6 +277,7 @@ $dynamicFull = Get-Layout "Thema" $null $dynamicBody
 Set-Content -Path (Join-Path $outDir "topic.html") -Value $dynamicFull -Encoding UTF8
 
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
 
 
