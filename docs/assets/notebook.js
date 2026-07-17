@@ -1,6 +1,7 @@
-(function () {
+function initNotebook() {
   var section = document.querySelector('.notebook');
-  if (!section) return;
+  if (!section || section.dataset.notebookReady) return;
+  section.dataset.notebookReady = '1';
 
   var slug = section.dataset.slug;
   var notesKey = 'notes:' + slug;
@@ -173,4 +174,7 @@
     };
     reader.readAsDataURL(file);
   });
-})();
+}
+
+window.initNotebook = initNotebook;
+initNotebook();

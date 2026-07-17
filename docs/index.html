@@ -31,11 +31,24 @@
   <h2>Verkaufsgespräche & Eloquenz</h2>
   <p>Gesprächstechniken, Rhetorik und Notizen zu überzeugender Kommunikation.</p>
 </a>
+<div class="card card-add">
+  <button type="button" class="add-topic-button">+ Neues Thema</button>
+  <form class="add-topic-form">
+    <input type="text" class="add-topic-title" placeholder="Titel" required>
+    <input type="text" class="add-topic-emoji" placeholder="Emoji (optional)" maxlength="4">
+    <input type="text" class="add-topic-summary" placeholder="Kurzbeschreibung (optional)">
+    <button type="submit">Anlegen</button>
+  </form>
+  <p class="card-add-hint">Wird nur in diesem Browser gespeichert.</p>
+</div>
 </section>
 </main>
 <footer class="site-footer">
   <p>Persönliche Wissenssammlung</p>
 </footer>
+<script>window.STATIC_SLUGS = ["prompting","verkaufsgespraeche-eloquenz"];</script>
+<script src="assets/topics.js"></script>
 <script src="assets/notebook.js"></script>
+<script src="assets/dynamic-topic.js"></script>
 </body>
 </html>

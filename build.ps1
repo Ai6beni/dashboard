@@ -143,6 +143,7 @@ Get-ChildItem -Path $contentDir -Filter *.md | Sort-Object Name | ForEach-Object
         BodyHtml = Convert-Markdown $parsed.Body
     }
 }
+$staticSlugsJs = ($topics | ForEach-Object { '"' + $_.Slug + '"' }) -join ','
 
 # --- Templates ---
 function Get-Nav($activeSlug) {
@@ -178,7 +179,10 @@ $bodyHtml
 <footer class="site-footer">
   <p>Persönliche Wissenssammlung</p>
 </footer>
+<script>window.STATIC_SLUGS = [$staticSlugsJs];</script>
+<script src="assets/topics.js"></script>
 <script src="assets/notebook.js"></script>
+<script src="assets/dynamic-topic.js"></script>
 </body>
 </html>
 "@
@@ -244,12 +248,32 @@ $indexBody = @"
 </section>
 <section class="card-grid">
 $([string]::Join("`n", $cards))
+<div class="card card-add">
+  <button type="button" class="add-topic-button">+ Neues Thema</button>
+  <form class="add-topic-form">
+    <input type="text" class="add-topic-title" placeholder="Titel" required>
+    <input type="text" class="add-topic-emoji" placeholder="Emoji (optional)" maxlength="4">
+    <input type="text" class="add-topic-summary" placeholder="Kurzbeschreibung (optional)">
+    <button type="submit">Anlegen</button>
+  </form>
+  <p class="card-add-hint">Wird nur in diesem Browser gespeichert.</p>
+</div>
 </section>
 "@
 $indexFull = Get-Layout "Meine Themen – Übersicht" $null $indexBody
 Set-Content -Path (Join-Path $outDir "index.html") -Value $indexFull -Encoding UTF8
 
+# --- Generische Seite fuer selbst angelegte Themen ---
+$dynamicBody = @"
+<div id="dynamic-topic">
+  <p class="notebook-hint">Lade Thema…</p>
+</div>
+"@
+$dynamicFull = Get-Layout "Thema" $null $dynamicBody
+Set-Content -Path (Join-Path $outDir "topic.html") -Value $dynamicFull -Encoding UTF8
+
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
 
 
