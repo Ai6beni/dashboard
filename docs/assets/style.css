@@ -555,3 +555,212 @@ main {
   border-color: #b8452e;
   color: #e0715a;
 }
+
+.widget-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.widget-toggles:empty {
+  display: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.add-widget {
+  background: transparent;
+  border: 1px dashed var(--gold-dim);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.add-widget:hover {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+/* --- Checkliste --- */
+.checklist-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.checklist-form .checklist-input {
+  flex: 1 1 200px;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.checklist-form .checklist-input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.checklist-form button {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-bright);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.checklist-form button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.checklist-item:hover {
+  border-color: var(--gold-dim);
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+
+.checklist-text {
+  flex: 1;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.checklist-item.done .checklist-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.checklist-remove {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.checklist-item:hover .checklist-remove {
+  opacity: 1;
+}
+
+.checklist-remove:hover {
+  color: #e0715a;
+}
+
+/* --- Linkliste --- */
+.linklist-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.linklist-form input {
+  flex: 1 1 160px;
+  background: #0e0d0b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.linklist-form input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.linklist-form button {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-bright);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.linklist-form button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.linklist-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+
+.linklist-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: linear-gradient(160deg, var(--surface), #0f0e0c);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.linklist-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.14);
+  border-color: var(--gold-dim);
+}
+
+.linklist-thumb {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #0e0d0b;
+  border: 1px solid var(--gold-dim);
+  flex-shrink: 0;
+}
+
+.linklist-thumb.is-favicon {
+  border-radius: 50%;
+  object-fit: contain;
+  padding: 0.4rem;
+}
