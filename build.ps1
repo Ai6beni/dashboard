@@ -178,6 +178,7 @@ function Get-Layout($title, $activeSlug, $bodyHtml) {
     <a href="index.html">Übersicht</a>
     $nav
   </nav>
+  <div class="auth-slot"></div>
 </header>
 <main>
 $bodyHtml
@@ -186,9 +187,10 @@ $bodyHtml
   <p>Persönliche Wissenssammlung</p>
 </footer>
 <script>window.STATIC_SLUGS = [$staticSlugsJs];</script>
-<script src="assets/topics.js"></script>
-<script src="assets/notebook.js"></script>
-<script src="assets/dynamic-topic.js"></script>
+<script type="module" src="assets/firebase-sync.js"></script>
+<script type="module" src="assets/topics.js"></script>
+<script type="module" src="assets/notebook.js"></script>
+<script type="module" src="assets/dynamic-topic.js"></script>
 </body>
 </html>
 "@
@@ -283,6 +285,7 @@ $dynamicFull = Get-Layout "Thema" $null $dynamicBody
 Set-Content -Path (Join-Path $outDir "topic.html") -Value $dynamicFull -Encoding UTF8
 
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
 
 

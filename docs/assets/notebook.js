@@ -177,4 +177,4 @@ function initNotebook() {
 }
 
 window.initNotebook = initNotebook;
-initNotebook();
+(window.CloudReady || Promise.resolve()).then(initNotebook);

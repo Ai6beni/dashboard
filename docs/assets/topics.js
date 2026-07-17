@@ -39,7 +39,9 @@ var TopicsStore = (function () {
   };
 })();
 
-(function () {
+window.TopicsStore = TopicsStore;
+
+(window.CloudReady || Promise.resolve()).then(function () {
   var customTopics = TopicsStore.loadCustomTopics();
 
   // Eigene Themen im Menü oben auf jeder Seite ergaenzen

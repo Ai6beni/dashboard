@@ -145,6 +145,40 @@ body::after {
   border-color: var(--gold-dim);
 }
 
+.auth-slot {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.auth-status {
+  font-size: 0.76rem;
+  color: var(--muted);
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-button {
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-bright);
+  border-radius: 8px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.auth-button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
 .topnav a.active {
   color: var(--gold-bright);
   border-color: var(--gold);

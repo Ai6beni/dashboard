@@ -1,4 +1,4 @@
-(function () {
+(window.CloudReady || Promise.resolve()).then(function () {
   var mount = document.getElementById('dynamic-topic');
   if (!mount) return;
 
@@ -369,4 +369,4 @@
   }
 
   renderWidgets();
-})();
+});
