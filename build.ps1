@@ -167,7 +167,13 @@ function Get-Layout($title, $activeSlug, $bodyHtml) {
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="index.html">📚 Meine Themen</a>
+  <a class="brand" href="index.html">
+    <span class="brand-emoji">📚</span>
+    <span class="brand-lockup">
+      <span class="brand-title">Meine Themen</span>
+      <span class="brand-sub">Persönliche Sammlung</span>
+    </span>
+  </a>
   <nav class="topnav">
     <a href="index.html">Übersicht</a>
     $nav
@@ -277,6 +283,7 @@ $dynamicFull = Get-Layout "Thema" $null $dynamicBody
 Set-Content -Path (Join-Path $outDir "topic.html") -Value $dynamicFull -Encoding UTF8
 
 Write-Host "Fertig: $($topics.Count) Themen-Seiten + index.html wurden in '$outDir' erzeugt." -ForegroundColor Green
+
 
 
 
